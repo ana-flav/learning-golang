@@ -1,9 +1,9 @@
 package service 
 
 type SongTaylorService interface{
-	AddSong()
+	AddSong(nome string, LinkSong string) (bool, error)
 }
 
-func AddSong(){
+func AddSong(nome string, LinkSong string) (bool, error){
 	
 }
