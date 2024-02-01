@@ -8,9 +8,20 @@ import (
 	"github.com/ana-flav/learning-golang.git/service"
 )
 
+type SongService interface {
+	AddSong(http.ResponseWriter, *http.Request)
+	
+}
 type SongHandler struct {
 	songService service.SongService
 }
+
+func NewSongHandler(songService service.SongService) *SongHandler {
+	return &SongHandler{
+		songService: songService,
+	}
+}
+
 func (sh *SongHandler) AddSong(w http.ResponseWriter, r *http.Request) {
 
 	var newSongTaylor models.SongTaylor

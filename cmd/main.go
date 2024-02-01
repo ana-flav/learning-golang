@@ -20,9 +20,12 @@ func main() {
     defer db.Close()  
 
     songRepo := repository.NewSongRepository(db)
+    songService := service.NewSongService(*songRepo)
+    songHandler := handlers.NewSongHandler(songService)
+   
 
     
     router := mux.NewRouter()
-	router.HandleFunc("/add-song/", AddSong).Methods("POST")
+	router.HandleFunc("/add-song/", songHandler.AddSong).Methods("POST")
     log.Fatal(http.ListenAndServe(":8000", router))
 }
