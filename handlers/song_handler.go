@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/ana-flav/learning-golang.git/models"
@@ -32,13 +33,19 @@ func (sh *SongHandler) AddSong(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error decoding JSON", http.StatusBadRequest)
 		return 
 	}
+	fmt.Println("New song: ", newSongTaylor)
 
+
+	
 	err = sh.songService.AddSong(newSongTaylor)
 	if err != nil {
+		fmt.Println("Error adding song: ", err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
 
+	fmt.Fprintf(w, "Song added successfully")
+	fmt.Println("Song added successfully: ", http.StatusCreated	)
 	w.WriteHeader(http.StatusCreated)
 
 }
