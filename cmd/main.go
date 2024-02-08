@@ -31,5 +31,6 @@ func main() {
     router := mux.NewRouter()
     fmt.Println("Server is running on port 8000")   
 	router.HandleFunc("/add-song", songHandler.AddSong).Methods("POST")
+    router.HandleFunc("/get-songs", songHandler.GetSong).Methods(("GET"))
     log.Fatal(http.ListenAndServe(":8000", router))
 }

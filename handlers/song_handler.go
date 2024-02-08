@@ -11,6 +11,7 @@ import (
 
 type SongService interface {
 	AddSong(http.ResponseWriter, *http.Request)
+	GetSong(http.ResponseWriter, *http.Request)
 	
 }
 type SongHandler struct {
@@ -48,4 +49,21 @@ func (sh *SongHandler) AddSong(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Song added successfully: ", http.StatusCreated	)
 	w.WriteHeader(http.StatusCreated)
 
+}
+
+func (sh *SongHandler) GetSong(w http.ResponseWriter, r *http.Request){
+	var allSongsTaylor = make([]models.SongTaylor, 0)
+	var err error
+	allSongsTaylor, err = sh.songService.GetAllSongs()
+
+	if err != nil {
+        http.Error(w, "Erro ao obter todas as músicas", http.StatusInternalServerError)
+        return
+    }
+	w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusOK)
+    if err := json.NewEncoder(w).Encode(allSongsTaylor); err != nil {
+        http.Error(w, "Erro ao codificar a resposta JSON", http.StatusInternalServerError)
+        return
+    }
 }

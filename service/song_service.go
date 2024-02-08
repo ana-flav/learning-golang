@@ -9,8 +9,10 @@ import (
 )
 
 type SongService interface {
-	AddSong(song models.SongTaylor) error
+    AddSong(song models.SongTaylor) error
+    GetAllSongs() ([]models.SongTaylor, error)  
 }
+
 
 type songService struct {
 	songRepository repository.SongRepository 
@@ -33,3 +35,9 @@ func (s *songService) AddSong(song models.SongTaylor) error {
 	fmt.Println("Song to be added: ", song.LinkSong, song.Name)
 	return s.songRepository.InsertSong(song)
 }
+
+func (s *songService) GetAllSongs() ([]models.SongTaylor, error) {
+    return s.songRepository.GetAllSongs()
+}
+
+
