@@ -1,7 +1,10 @@
 package models 
+import (
+	"github.com/google/uuid"
+)
 
 type SongTaylor struct {
-	ID 		 int
+	ID 		 uuid.UUID
 	Name 	 string
 	LinkSong string
 }

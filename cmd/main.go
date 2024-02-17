@@ -30,7 +30,10 @@ func main() {
     
     router := mux.NewRouter()
     fmt.Println("Server is running on port 8000")   
-	router.HandleFunc("/add-song", songHandler.AddSong).Methods("POST")
-    router.HandleFunc("/get-songs", songHandler.GetSong).Methods(("GET"))
+	router.HandleFunc("/add-song", songHandler.AddSongHandler).Methods("POST")
+    router.HandleFunc("/get-songs", songHandler.GetSongHandler).Methods(("GET"))
+    router.HandleFunc("/delete-song/{IdSong}", songHandler.DeleteSongHandler).Methods(("DELETE"))
+    router.HandleFunc("/update-song/{IdSong}", songHandler.UpdateSongHandler).Methods(("PUT"))
+    router.HandleFunc("/get-song/{IdSong}", songHandler.GetSongByIdHandler).Methods(("GET"))
     log.Fatal(http.ListenAndServe(":8000", router))
 }

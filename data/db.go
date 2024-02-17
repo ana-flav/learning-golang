@@ -11,8 +11,6 @@ import (
 
 func DataBase() (*sql.DB, error) {
 	
-	currentWorkDirectory, _ := os.Getwd()
-	fmt.Println("Current work directory: ", currentWorkDirectory)
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal("Error loading .env file: ", err	)
