@@ -1,61 +1,61 @@
 # Taylor Swift Songs API
 
-Este é um projeto simples em Go, uma API REST para gerenciar músicas da Taylor Swift, com operações CRUD.
+This is a simple Go project, a REST API for managing Taylor Swift songs, with CRUD operations.
 
-## Pré-requisitos
+## Prerequisites
 
-Certifique-se de ter o Go instalado na sua máquina. Você pode baixá-lo em [golang.org](https://golang.org/).
+Make sure you have Go installed on your computer. You can download it from [golang.org](https://golang.org/).
 
-Também é necessário ter um banco de dados SQL para estabelecer as conexões necessárias. No diretório do projeto, crie um arquivo `.env` com base no exemplo fornecido em `.env.example`, e preencha as informações do seu banco de dados PostgreSQL.
+You'll also need an SQL database to establish the necessary connections. In the project directory, create a `.env` file based on the example provided in `.env.example` and fill in the information for your PostgreSQL database.
 
-Exemplo do arquivo `.env`:
+Example `.env` file:
 
 ```env
 DB_HOST=localhost
 DB_PORT=5432
-DB_USER=seu_usuario
-DB_PASSWORD=sua_senha
-DB_NAME=nome_do_banco
+DB_USER=your_user
+DB_PASSWORD=your_password
+DB_NAME=your_database_name
 ```
 
-Certifique-se de criar o banco de dados correspondente no PostgreSQL.
+Ensure you create the corresponding database in PostgreSQL.
 
-## Instalação e Execução
+## Installation and Execution
 
-1. Clone o repositório:
+1. Clone the repository:
 
     ```bash
     git clone https://github.com/ana-flav/learning-golang.git
-    cd seu-projeto
+    cd your-project
     ```
 
-2. Baixe as dependências do Go:
+2. Download Go dependencies:
 
     ```bash
     go mod download
     ```
 
-3. Execute o projeto (certifique de estar na dentro do diretório cmd):
+3. Run the project (make sure you are inside the cmd directory):
 
     ```bash
     go run main.go
     ```
 
-A API estará disponível em [http://localhost:8000](http://localhost:8000).
+The API will be available at [http://localhost:8000](http://localhost:8000).
 
-## Exemplo de Uso com Postman
+## Example Usage with Postman
 
-Vamos fornecer um exemplo de como usar o Postman para enviar uma solicitação POST e adicionar uma música usando o endpoint da sua API.
+Let's provide an example of how to use Postman to send a POST request and add a song using your API endpoint.
 
-1. Abra o Postman e crie uma nova solicitação.
+1. Open Postman and create a new request.
 
-2. Selecione o método POST no canto superior esquerdo.
+2. Select the POST method.
 
-3. Insira a URL da sua API para adicionar uma música, por exemplo: `http://localhost:8000/add-song`.
+3. Enter the URL of your API to add a song, for example: `http://localhost:8000/add-song`.
 
-4. Vá para a guia "Body" e selecione "raw" e escolha "JSON (application/json)" no menu.
+4. Go to the "Body" tab, select "raw", and choose "JSON (application/json)" from the menu.
 
-5. No corpo da solicitação, insira os detalhes da música que você deseja adicionar. Por exemplo:
+5. In the request body, enter the details of the song you want to add. For example:
 
     ```json
     {
@@ -64,8 +64,6 @@ Vamos fornecer um exemplo de como usar o Postman para enviar uma solicitação P
     }
     ```
 
-6. Clique no botão "Send" para enviar a solicitação.
+6. Click the "Send" button to send the request.
 
-Isso enviará uma solicitação POST para o endpoint `http://localhost:8000/add-song` com os detalhes da música fornecidos no corpo da solicitação. Lembre-se de adaptar os detalhes conforme necessário para corresponder aos campos esperados em sua aplicação.
-
-Lembre-se de que este é apenas um exemplo e você pode ajustar os detalhes conforme necessário para a sua implementação específica.
+This will send a POST request to the `http://localhost:8000/add-song` endpoint with the song details provided in the request body. Remember to adapt the details as needed to match the expected fields in your application.
